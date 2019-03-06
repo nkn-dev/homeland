@@ -144,6 +144,12 @@ server {
   location /tools {
     alias /home/app/homeland/public/tools$filename;
   }
+  location /robots.txt {
+    alias /home/app/homeland/public/robots.txt;
+  }
+  location /favicon.ico {
+    alias /home/app/homeland/public/favicon.ico;
+  }
 
   # 关闭验证码 暂停注册
   # location /rucaptcha {

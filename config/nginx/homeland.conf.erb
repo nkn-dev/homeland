@@ -13,11 +13,16 @@ log_format timed_combined '$remote_addr - $remote_user [$time_local] '
                           '$request_time $upstream_response_time $pipe';
 
 server {
-  listen 80 default_server;
+  listen 80;
 
   <% if ENV['https'] == "true" || ENV["https"] == "1" %>
   include /etc/nginx/ssl.conf;
   <% end %>
+
+  <% if !ENV['domain'].empty? %>
+  server_name <%= ENV['domain'] || "localhost" %>;
+  <% end %>
+  
 
   location /nginx_status {
     allow 127.0.0.1;
@@ -47,6 +52,7 @@ server {
 
   # DO NOT CHANGE THIS
   location /assets {
+    alias /home/app/homeland/public/assets$filename;
     access_log        off;
     expires           365d;
     gzip_static on;
@@ -133,6 +139,20 @@ server {
     image_filter_buffer         20M;
     image_filter_interlace      on;
   }
+
+  # NKN自定义
+  location /tools {
+    alias /home/app/homeland/public/tools$filename;
+  }
+
+  # 关闭验证码 暂停注册
+  # location /rucaptcha {
+  #   return 400;
+  # }
+  # location /account/sign_up {
+  #   return 404;
+  # }
+  # NKN自定义
 
   # DO NOT CHANGE THIS
   location / {

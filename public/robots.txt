@@ -3,3 +3,12 @@ Disallow: /cable
 Disallow: /rucaptcha
 Disallow: /account/sign_in
 Disallow: /account/sign_up
+Disallow: /topics/excellent
+Disallow: /topics/popular
+Disallow: /topics/banned
+Disallow: /topics/no_reply
+Disallow: /topics/last_reply
+Disallow: /topics/last
+Disallow: /topics/new
+Disallow: /wiki/new
+Disallow: /notifications

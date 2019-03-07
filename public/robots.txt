@@ -1,2 +1,5 @@
 User-agent: *
-Disallow: /
+Disallow: /cable
+Disallow: /rucaptcha
+Disallow: /account/sign_in
+Disallow: /account/sign_up
